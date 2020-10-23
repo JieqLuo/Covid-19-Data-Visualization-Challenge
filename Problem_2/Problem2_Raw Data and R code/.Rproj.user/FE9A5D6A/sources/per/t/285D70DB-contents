@@ -1,0 +1,164 @@
+---
+title: "NYT News"
+author: "Jieqiao Luo"
+date: "9/23/2020"
+output: html_document
+---
+
+```{r}
+library(readr)
+library(lubridate)
+library(tidytext)
+library(dplyr)
+library(stringr)
+library(tm)
+library(stopwords)
+library(ggplot2)
+library(optimbase)
+```
+
+
+```{r}
+NYT_news_2017_2018<- read.csv("Business_news_NYT_20171201-20181001.csv", header = FALSE, na.strings = "NA",sep = ',' ,encoding = 'UTF-8')
+NYT_news_2018_2019<- read.csv("Business_news_NYT_20181001-20191201.csv", header = FALSE, na.strings = "NA",sep = ',' , encoding = 'UTF-8')
+NYT_news_2019_2020<- read.csv("Business_news_NYT_20191202-20200719.csv", header = FALSE, na.strings = "NA",sep = ',' ,encoding = 'UTF-8')
+```
+
+```{r}
+NYT_news_2017_2018<-NYT_news_2017_2018[NYT_news_2017_2018$V4=="Business Day",]
+NYT_news_2018_2019<-NYT_news_2018_2019[NYT_news_2018_2019$V4=="Business Day",]
+NYT_news_2019_2020<-NYT_news_2019_2020[NYT_news_2019_2020$V4=="Business Day",]
+```
+
+```{r}
+
+NYT_news_2017_2019 <- rbind(NYT_news_2017_2018,NYT_news_2018_2019)
+NYT_news_2017_2020 <- rbind(NYT_news_2017_2019,NYT_news_2019_2020)
+```
+
+
+```{r}
+Remove_unicode_error<- function(dataframe){dataframe$V2 <- iconv(dataframe$V2, "", "ASCII", "byte")
+# NYT_news_2017_2018$V2[1] <-str_replace_all(NYT_news_2017_2018$v2[1], pattern = "[^[:alnum:]]", " ") does not work
+dataframe$V2 <-gsub("[^[:alnum:]]", " ", dataframe$V2)
+
+dataframe$V3 <- iconv(dataframe$V3, "", "ASCII", "byte")
+dataframe$V3 <-gsub("[^[:alnum:]]", " ", dataframe$V3)
+dataframe<-data.frame(dataframe$V1,dataframe$V2,dataframe$V3)
+return(dataframe)
+}
+NYT_news_2017_2020<-Remove_unicode_error(NYT_news_2017_2020)
+
+```
+
+
+
+```{r}
+names(NYT_news_2017_2020) <-c("date","headline","description")
+head(NYT_news_2017_2020)
+str(NYT_news_2017_2020)
+NYT_news_2017_2020<- NYT_news_2017_2020[!is.na(NYT_news_2017_2020$date),]
+```
+
+
+
+```{r}
+
+NYT_news_2017_2020$date<- ymd_hms(NYT_news_2017_2020$date)
+NYT_news_2017_2020$date<-paste0(year(NYT_news_2017_2020$date),'-',month(NYT_news_2017_2020$date),'-',day(NYT_news_2017_2020$date))
+
+#NYT_news_2017_2018$date
+#NYT_news_2017_2018$Weekday
+```
+
+```{r}
+NYT_news_2017_2020$date<- as.Date(NYT_news_2017_2020$date)
+```
+
+```{r}
+NYT_news_2017_2020<-NYT_news_2017_2020[order(NYT_news_2017_2020$date),]
+
+```
+
+
+```{r}
+
+NYT_news_2017_2020$headline<-as.character(NYT_news_2017_2020$headline)
+
+
+NYT_news_2017_2020_distinct<-NYT_news_2017_2020[!duplicated(NYT_news_2017_2020$headline),]
+NYT_news_2017_2020_distinct_raw<- NYT_news_2017_2020_distinct
+nrow(NYT_news_2017_2020)
+nrow(NYT_news_2017_2020_distinct)
+
+
+
+```
+
+
+```{r}
+NYT_news_2017_2020_distinct$headline  <- str_replace_all(NYT_news_2017_2020_distinct$headline, pattern = "[[:punct:]]", " ")
+NYT_news_2017_2020_distinct$headline  <- tolower(NYT_news_2017_2020_distinct$headline)
+NYT_news_2017_2020_distinct$headline  <- tm::removeNumbers(NYT_news_2017_2020_distinct$headline)
+NYT_news_2017_2020_distinct$headline  <- tm::removeWords(x = NYT_news_2017_2020_distinct$headline, stopwords("English"))
+NYT_news_2017_2020_distinct$headline<-gsub('(?<=\\s)(\\w{1,2}\\s)','',NYT_news_2017_2020_distinct$headline,perl=T)
+NYT_news_2017_2020_distinct
+#NYT_news_headline_Corpus <- Corpus(VectorSource(NYT_news_2017_2020_distinct$headline)) # Convert input data to corpus
+
+```
+
+
+
+#Headline_dtm <- DocumentTermMatrix(NYT_news_headline_Corpus,
+                                 control = list(
+                                   stopwords = TRUE, 
+                                   wordLengths=c(3, 10),
+                                   stemWords=TRUE,
+                                   remove_separators = TRUE,
+                                   stem=TRUE
+                                 ))
+#headline_as_matrix<-as.matrix(Headline_dtm)
+
+
+
+
+
+#```{r}
+#Row_Sum_Per_headline <- rowSums(headline_as_matrix)
+#word_count<-transpose(Row_Sum_Per_headline)
+#outlier<- (word_count %in% c(0,1))
+#headlineCheck<-data.frame(NYT_news_2017_2020_distinct$date,word_count,outlier)
+#headline_check_outlier<-ggplot(headlineCheck) + #geom_bar(aes(NYT_news_2017_2020_distinct$date, fill = outlier)) +ggtitle("Check #Headline outlier")
+#headline_check_outlier
+#```
+
+#```{r}
+#headline_DF <- as.data.frame(headline_as_matrix)
+#headline_DF<-headline_DF[outlier==FALSE,]
+#```
+
+#```{r}
+
+
+#distribution_of_news<-ggplot(NYT_news_2017_2020_distinct) + #geom_bar(aes(NYT_news_2017_2020_distinct$date),color='red') +ggtitle("Headline #distribution outlier")
+#distribution_of_news
+#```
+```{r}
+NYT_news_2017_2020_distinct<-NYT_news_2017_2020_distinct[NYT_news_2017_2020_distinct$date>='2018-03-20',]
+distribution_of_news<-ggplot(NYT_news_2017_2020_distinct) + geom_bar(aes(NYT_news_2017_2020_distinct$date),color='red') +ggtitle("Headline number outlier ")
+distribution_of_news
+```
+
+```{r}
+NYT_news_2017_2020_distinct$date <- as.Date(NYT_news_2017_2020_distinct$date, format="%Y-%m-%d")
+tab <- table(cut(NYT_news_2017_2020_distinct$date, 'day'))
+sort(tab,decreasing = TRUE)
+
+```
+
+```{r}
+NYT_news_2017_2020_distinct$source<-"New York Times"
+
+
+write.csv(NYT_news_2017_2020_distinct,file="Cleaned_New_York_News.csv",row.names = F)
+```

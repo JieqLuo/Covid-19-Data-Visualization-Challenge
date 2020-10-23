@@ -1,0 +1,32 @@
+{
+    "id": "FF1086D2",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1603078427947.0,
+    "source_on_save": false,
+    "relative_order": 3,
+    "properties": {
+        "expression": "Confirmed_Recovery_Data",
+        "caption": "Confirmed_Recovery_Data",
+        "totalObservations": "270",
+        "displayedObservations": "270",
+        "variables": "15",
+        "cacheKey": "EA1D42A0",
+        "object": "Confirmed_Recovery_Data",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=Confirmed_Recovery_Data&cache_key=EA1D42A0&max_cols=50",
+        "preview": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 2493780158544,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1603078427947,
+    "read_only": false,
+    "read_only_alternatives": []
+}

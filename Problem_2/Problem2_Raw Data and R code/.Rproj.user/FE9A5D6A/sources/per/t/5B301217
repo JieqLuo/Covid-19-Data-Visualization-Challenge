@@ -1,0 +1,32 @@
+{
+    "id": "5B301217",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1603079806541.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "expression": "Covid_case_DF_with_measure_count",
+        "caption": "Covid_case_DF_with_measure_count",
+        "totalObservations": "271",
+        "displayedObservations": "271",
+        "variables": "29",
+        "cacheKey": "E85092FF",
+        "object": "Covid_case_DF_with_measure_count",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=Covid_case_DF_with_measure_count&cache_key=E85092FF&max_cols=50",
+        "preview": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1943551874160,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1603079806541,
+    "read_only": false,
+    "read_only_alternatives": []
+}

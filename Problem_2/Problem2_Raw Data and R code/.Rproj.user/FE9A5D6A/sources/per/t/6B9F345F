@@ -1,0 +1,32 @@
+{
+    "id": "6B9F345F",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1603068400054.0,
+    "source_on_save": false,
+    "relative_order": 9,
+    "properties": {
+        "expression": "Government_measures",
+        "caption": "Government_measures",
+        "totalObservations": "19493",
+        "displayedObservations": "19493",
+        "variables": "18",
+        "cacheKey": "86F450F2",
+        "object": "Government_measures",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=Government_measures&cache_key=86F450F2&max_cols=50",
+        "preview": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 2626268470507168108,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1603068400054,
+    "read_only": false,
+    "read_only_alternatives": []
+}

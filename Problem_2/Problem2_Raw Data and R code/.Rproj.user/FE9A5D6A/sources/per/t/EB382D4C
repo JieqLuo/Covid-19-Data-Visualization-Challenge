@@ -1,0 +1,32 @@
+{
+    "id": "EB382D4C",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1603072623308.0,
+    "source_on_save": false,
+    "relative_order": 5,
+    "properties": {
+        "expression": "Confirmed_data",
+        "caption": "Confirmed_data",
+        "totalObservations": "270",
+        "displayedObservations": "270",
+        "variables": "8",
+        "cacheKey": "D5076641",
+        "object": "Confirmed_data",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=Confirmed_data&cache_key=D5076641&max_cols=50",
+        "preview": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 3689635800111329334,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1603072623308,
+    "read_only": false,
+    "read_only_alternatives": []
+}

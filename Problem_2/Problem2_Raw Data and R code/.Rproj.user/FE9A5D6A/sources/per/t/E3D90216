@@ -1,0 +1,32 @@
+{
+    "id": "E3D90216",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1603078490072.0,
+    "source_on_save": false,
+    "relative_order": 7,
+    "properties": {
+        "expression": "Covid_case_DF",
+        "caption": "Covid_case_DF",
+        "totalObservations": "378",
+        "displayedObservations": "378",
+        "variables": "22",
+        "cacheKey": "3E011AB1",
+        "object": "Covid_case_DF",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=Covid_case_DF&cache_key=3E011AB1&max_cols=50",
+        "preview": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 16044468812775491,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1603078490072,
+    "read_only": false,
+    "read_only_alternatives": []
+}

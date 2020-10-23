@@ -1,0 +1,32 @@
+{
+    "id": "E48B4480",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1603068587127.0,
+    "source_on_save": false,
+    "relative_order": 11,
+    "properties": {
+        "expression": "Government_measures_filter",
+        "caption": "Government_measures_filter",
+        "totalObservations": "726",
+        "displayedObservations": "726",
+        "variables": "5",
+        "cacheKey": "2EFD3440",
+        "object": "Government_measures_filter",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=Government_measures_filter&cache_key=2EFD3440&max_cols=50",
+        "preview": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 18577743603171395,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1603068587127,
+    "read_only": false,
+    "read_only_alternatives": []
+}
